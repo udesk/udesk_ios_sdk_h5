@@ -15,6 +15,8 @@
 		045FF47A1E00E69D00572377 /* TestWebViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FF4791E00E69D00572377 /* TestWebViewTests.swift */; };
 		045FF4851E00E69D00572377 /* TestWebViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FF4841E00E69D00572377 /* TestWebViewUITests.swift */; };
 		045FF4941E00E6C600572377 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045FF4931E00E6C600572377 /* WebKit.framework */; };
+		04A4DFAE1E23791E00EE611F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4DFAD1E23791E00EE611F /* Photos.framework */; };
+		04A4DFB01E237B0700EE611F /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4DFAF1E237B0700EE611F /* PhotosUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		045FF4841E00E69D00572377 /* TestWebViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWebViewUITests.swift; sourceTree = "<group>"; };
 		045FF4861E00E69D00572377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045FF4931E00E6C600572377 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		04A4DFAD1E23791E00EE611F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		04A4DFAF1E237B0700EE611F /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A4DFB01E237B0700EE611F /* PhotosUI.framework in Frameworks */,
+				04A4DFAE1E23791E00EE611F /* Photos.framework in Frameworks */,
 				045FF4941E00E6C600572377 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +138,8 @@
 		045FF4921E00E6C600572377 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04A4DFAF1E237B0700EE611F /* PhotosUI.framework */,
+				04A4DFAD1E23791E00EE611F /* Photos.framework */,
 				045FF4931E00E6C600572377 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -205,6 +213,7 @@
 				TargetAttributes = {
 					045FF4601E00E69D00572377 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = DVNW3ZM7G9;
 						ProvisioningStyle = Automatic;
 					};
 					045FF4741E00E69D00572377 = {
@@ -424,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DVNW3ZM7G9;
 				INFOPLIST_FILE = TestWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Army.TestWebView;
@@ -436,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DVNW3ZM7G9;
 				INFOPLIST_FILE = TestWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Army.TestWebView;
@@ -517,6 +528,7 @@
 				045FF48B1E00E69D00572377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		045FF48C1E00E69D00572377 /* Build configuration list for PBXNativeTarget "TestWebViewTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +537,7 @@
 				045FF48E1E00E69D00572377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		045FF48F1E00E69D00572377 /* Build configuration list for PBXNativeTarget "TestWebViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +546,7 @@
 				045FF4911E00E69D00572377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -45,16 +45,18 @@ extension  ViewController {
 
     fileprivate func setupBase(){
 
-        let version = UIDevice.current.systemVersion
-        let floatVersion : Float? = Float(version)
+//        let version = UIDevice.current.systemVersion
+//        let floatVersion : Float? = Float(version)
 
-        if let ver = floatVersion {
-            if ver >= 8.0 {
-                view.addSubview(testWK)
-            }else{
-                view.addSubview(testWB)
-            }
-        }
+//        if let ver = floatVersion {
+//            if ver >= 8.0 {
+//                view.addSubview(testWK)
+//            }else{
+//                view.addSubview(testWB)
+//            }
+//        }
+
+         view.addSubview(testWB)
     }
 }
 
