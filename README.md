@@ -2,15 +2,12 @@
 
 #### 1.键盘遮挡输入框问题
 
-这个问题一般发生在使用第三方键盘时候，使用系统键盘不会出现
-
 解决办法：
 
 ```objective-c
-//这里监听键盘事件（如果使用第三键盘，会导致键盘把输入框遮挡，使用此方法解决）
+
 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
 
-//这里监听键盘事件（如果使用第三键盘，会导致键盘把输入框遮挡，使用此方法解决）
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
     
@@ -20,10 +17,17 @@
     
     [UIView animateWithDuration:duration animations:^{
         
-        if (keyboardF.origin.y > self.view.height) {
-            _wkWebView.top = self.view.height - _wkWebView.height;
-        } else {
-            _wkWebView.top = keyboardF.origin.y - _wkWebView.height;
+        if (keyboardF.origin.y > CGRectGetHeight(self.view.frame)) {
+        
+            CGRect frame = _wkWebView.frame;
+            frame.origin.y = CGRectGetHeight(self.view.frame) - CGRectGetHeight(_wkWebView.frame);
+            _wkWebView.frame = frame;
+        } 
+        else {
+            
+            CGRect frame = _wkWebView.frame;
+            frame.origin.y = keyboardF.origin.y - CGRectGetHeight(_wkWebView.frame);
+            _wkWebView.frame = frame;
         }
     }];
 }

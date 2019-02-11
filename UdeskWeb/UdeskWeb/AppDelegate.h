@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  UdeskWebAgent
+//  UdeskWeb
 //
-//  Created by xuchen on 2017/3/15.
-//  Copyright © 2017年 xushichen. All rights reserved.
+//  Created by xuchen on 2019/2/11.
+//  Copyright © 2019 Udesk. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

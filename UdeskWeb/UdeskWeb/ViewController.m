@@ -1,56 +1,34 @@
 //
-//  UDWebViewViewController.m
-//  UdeskWebAgent
+//  ViewController.m
+//  UdeskWeb
 //
-//  Created by xuchen on 2017/4/5.
-//  Copyright © 2017年 xushichen. All rights reserved.
+//  Created by xuchen on 2019/2/11.
+//  Copyright © 2019 Udesk. All rights reserved.
 //
 
-#import "UDWebViewViewController.h"
+#import "ViewController.h"
 #import <WebKit/WebKit.h>
-#import "UIView+YYAdd.h"
 
-@interface UDWebViewViewController ()<WKUIDelegate,WKNavigationDelegate>
+@interface ViewController ()<WKUIDelegate,WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *wkWebView;
-@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
-@implementation UDWebViewViewController
-
-- (instancetype)initWithURL:(NSString *)url
-{
-    self = [super init];
-    if (self) {
-        
-        if ([[UIDevice currentDevice] systemVersion].floatValue < 8.0f) {
-            
-            _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-            [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-            [self.view addSubview:_webView];
-        }
-        else {
-            
-            _wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-            _wkWebView.UIDelegate = self;
-            _wkWebView.navigationDelegate = self;
-            [_wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-            [self.view addSubview:_wkWebView];
-        }
-    }
-    return self;
-}
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    //这里监听键盘事件（如果使用第三键盘，会导致键盘把输入框遮挡，使用此方法解决）
+    _wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    _wkWebView.UIDelegate = self;
+    _wkWebView.navigationDelegate = self;
+    [_wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://udesksdk.udesk.cn/im_client"]]];
+    [self.view addSubview:_wkWebView];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
-#pragma mark - 如果使用第三键盘，会导致键盘把输入框遮挡，使用此方法解决
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
     
@@ -65,22 +43,17 @@
 }
 
 - (void)updateWebViewFrameWithKeyboardF:(CGRect)keyboardF {
-    
-    if (_wkWebView) {
+
+    if (keyboardF.origin.y > CGRectGetHeight(self.view.frame)) {
         
-        if (keyboardF.origin.y > self.view.height) {
-            _wkWebView.top = self.view.height - _wkWebView.height;
-        } else {
-            _wkWebView.top = keyboardF.origin.y - _wkWebView.height;
-        }
-    }
-    else {
+        CGRect frame = _wkWebView.frame;
+        frame.origin.y = CGRectGetHeight(self.view.frame) - CGRectGetHeight(_wkWebView.frame);
+        _wkWebView.frame = frame;
+    } else {
         
-        if (keyboardF.origin.y > self.view.height) {
-            _webView.top = self.view.height - _webView.height;
-        } else {
-            _webView.top = keyboardF.origin.y - _webView.height;
-        }
+        CGRect frame = _wkWebView.frame;
+        frame.origin.y = keyboardF.origin.y - CGRectGetHeight(_wkWebView.frame);
+        _wkWebView.frame = frame;
     }
 }
 
@@ -203,25 +176,10 @@
 
 #pragma 重写dismiss方法
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-
+    
     if (self.presentedViewController) {
         [super dismissViewControllerAnimated:flag completion:completion];
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
