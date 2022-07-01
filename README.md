@@ -68,3 +68,33 @@
 //在需要dismiss的时候调用
 [super dismissViewControllerAnimated:flag completion:completion];
 ```
+
+#### 4.点击a标签无响应：target问题或打开新页面问题
+
+解决办法 同时处理或者2选其一
+
+```objective-c
+//1、打开新页面时
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+
+    NSLog(@"createWebViewWithConfiguration");
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+```
+
+```objective-c
+//2、监听url跳转事件
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+   if (!navigationAction.targetFrame.isMainFrame) {
+       [webView evaluateJavaScript:@"var a = document.getElementsByTagName('a');for(var i=0;i<a.length;i++){a[i].setAttribute('target','');}" completionHandler:nil];
+       if(navigationAction.targetFrame==nil){
+           [webView loadRequest:navigationAction.request];
+       }
+   }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+```
