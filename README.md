@@ -74,7 +74,8 @@
 解决办法 同时处理或者2选其一
 
 ```objective-c
-//1、打开新页面时
+//1、打开新页面时 -- 如果要打开的页url 是http协议的，注意配置plist
+//---- OC
 -(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
 
@@ -84,10 +85,17 @@
     }
     return nil;
 }
+//---- swift
+func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+    if (navigationAction.targetFrame == nil) || !navigationAction.targetFrame!.isMainFrame {
+        webview.load(navigationAction.request);
+    }
+    return nil;
+}
 ```
 
 ```objective-c
-//2、监听url跳转事件
+//2、a标签target问题：监听url跳转事件
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
    if (!navigationAction.targetFrame.isMainFrame) {
        [webView evaluateJavaScript:@"var a = document.getElementsByTagName('a');for(var i=0;i<a.length;i++){a[i].setAttribute('target','');}" completionHandler:nil];
