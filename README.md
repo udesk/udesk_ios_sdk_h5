@@ -1,5 +1,7 @@
 ### 			Udesk iOS-h5 使用须知
 
+接入代码可参考 ：[Demo 代码](https://github.com/udesk/udesk_ios_sdk_h5)
+
 #### 1.键盘遮挡输入框问题
 
 解决办法：

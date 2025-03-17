@@ -14,6 +14,7 @@
 		44BCAD732211160A00CA362B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44BCAD712211160A00CA362B /* LaunchScreen.storyboard */; };
 		44BCAD762211160A00CA362B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BCAD752211160A00CA362B /* main.m */; };
 		44BCAD812211166000CA362B /* UIWebView+JavaScriptAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BCAD7F2211165F00CA362B /* UIWebView+JavaScriptAlert.m */; };
+		847306F62D2CC1C600609463 /* TestIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847306F52D2CC1C600609463 /* TestIMViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		44BCAD752211160A00CA362B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44BCAD7E2211165F00CA362B /* UIWebView+JavaScriptAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JavaScriptAlert.h"; sourceTree = "<group>"; };
 		44BCAD7F2211165F00CA362B /* UIWebView+JavaScriptAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JavaScriptAlert.m"; sourceTree = "<group>"; };
+		847306F42D2CC1C600609463 /* TestIMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestIMViewController.h; sourceTree = "<group>"; };
+		847306F52D2CC1C600609463 /* TestIMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestIMViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 				44BCAD672211160700CA362B /* AppDelegate.m */,
 				44BCAD692211160700CA362B /* ViewController.h */,
 				44BCAD6A2211160700CA362B /* ViewController.m */,
+				847306F32D2CC1B100609463 /* TestIM */,
 				44BCAD7E2211165F00CA362B /* UIWebView+JavaScriptAlert.h */,
 				44BCAD7F2211165F00CA362B /* UIWebView+JavaScriptAlert.m */,
 				44BCAD6C2211160700CA362B /* Main.storyboard */,
@@ -74,6 +78,15 @@
 				44BCAD752211160A00CA362B /* main.m */,
 			);
 			path = UdeskWeb;
+			sourceTree = "<group>";
+		};
+		847306F32D2CC1B100609463 /* TestIM */ = {
+			isa = PBXGroup;
+			children = (
+				847306F42D2CC1C600609463 /* TestIMViewController.h */,
+				847306F52D2CC1C600609463 /* TestIMViewController.m */,
+			);
+			path = TestIM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +163,7 @@
 				44BCAD6B2211160700CA362B /* ViewController.m in Sources */,
 				44BCAD762211160A00CA362B /* main.m in Sources */,
 				44BCAD682211160700CA362B /* AppDelegate.m in Sources */,
+				847306F62D2CC1C600609463 /* TestIMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
